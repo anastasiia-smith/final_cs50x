@@ -5,5 +5,34 @@
 {% endblock %}
 
 {% block main %}
+    <h2 class="text-center mb-4">TAKSapp helps you to navigate through ADHD</h2>
+    
+    <div class="card-group mb-4">
+        <div class="card pb-4">
+            <div class="card-body">
+                <p class="card-text text-center">If you feel like this</p>
+            </div>
+            <img class="card-img-bottom w-50 mx-auto" alt="Panda lazy" src="{{url_for('static', filename='panda_1.png')}}">
+        </div>
+        <div class="card pb-4">
+            <div class="card-body">
+                <p class="card-text text-center">We got you</p>
+            </div>
+            <img class="card-img-bottom w-50 mx-auto" alt="Panda curious" src="{{url_for('static', filename='panda-2.png')}}">
+        </div>
+        <div class="card pb-4">
+            <div class="card-body">
+                <p class="card-text text-center">Get rewards for your completed tasks</p>
+            </div>
+            <img class="card-img-bottom w-50 mx-auto" alt="Panda busy" src="{{url_for('static', filename='panda-3.png')}}">
+        </div>
+    </div>
+    <div class="row align-items-center">
+        <div class="col-12 text-center">
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    
+    
 
 {% endblock %}

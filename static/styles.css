@@ -1,7 +1,10 @@
-img {
-    width: 100%;
+body {
+    background: url("/static/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: auto;
 }
 
-main {
-    margin-top: 20px;
+.footer {
+    position: absolute;
+    bottom: 0;
 }
