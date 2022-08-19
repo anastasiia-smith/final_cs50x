@@ -1,7 +1,41 @@
 
-from flask import Flask, render_template, redirect, session\
+import email
+from flask import Flask, render_template, redirect, request, session
+from flask_sqlalchemy import SQLAlchemy
+
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tasksapp.db'
+db = SQLAlchemy(app)
+
+class Users(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(200), nullable=False)
+    email = db.Column(db.String(200), nullable=False)
+    password = db.Column(db.String(200), nullable=False)
+    tasks = db.relationship('Tasks', backref='person', lazy=True)
+    rewards = db.relationship('Rewards', backref='person', lazy=True)
+
+    def __repr__(self):
+        return '<Name %r>' % self.name
+
+class Tasks(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    task = db.Column(db.String(300), nullable=False)
+    person_id = db.Column(db.Integer, db.ForeignKey('person.id'),
+        nullable=False)
+
+    def __repr__(self):
+        return '<Task %r>' % self.task
+
+class Rewards(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    reward = db.Column(db.String(300), nullable=False)
+    person_id = db.Column(db.Integer, db.ForeignKey('person.id'),
+        nullable=False)
+
+    def __repr__(self):
+        return '<Reward %r>' % self.reward
 
 @app.route("/")
 def index():

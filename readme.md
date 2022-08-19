@@ -45,3 +45,17 @@ export FLASK_DEBUG=1
 flask run
 
 # DB
+
+## install sqlalchemy
+
+pip install flask-sqlalchemy
+
+## open interactive
+
+python3
+
+## import and create db
+
+from app import db
+
+db.create_all()
