@@ -1,9 +1,3 @@
-body {
-    background: url("/static/bg.jpg");
-    background-repeat: no-repeat;
-    background-size: auto;
-}
-
 .footer {
     position: absolute;
     bottom: 0;

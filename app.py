@@ -7,6 +7,22 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
+@app.route("/login")
+def login():
+    return render_template("login.html")
+
+@app.route("/signup")
+def signup():
+    return render_template("signup.html")
+
+@app.route("/tasks")
+def tasks():
+    return render_template("tasks.html")
+
+@app.route("/rewards")
+def rewards():
+    return render_template("rewards.html")
+
 # Invalid URL
 @app.errorhandler(404)
 def page_not_found(e):
