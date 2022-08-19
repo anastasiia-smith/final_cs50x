@@ -43,3 +43,5 @@ export FLASK_DEBUG=1
 ### Run app
 
 flask run
+
+# DB

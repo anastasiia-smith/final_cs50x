@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, session\
 
 app = Flask(__name__)
 
@@ -7,21 +7,21 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
-    return render_template("login.html")
+    return render_template("login.html", title="Log in")
 
-@app.route("/signup")
-def signup():
-    return render_template("signup.html")
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    return render_template("register.html", title="Register")
 
-@app.route("/tasks")
+@app.route("/tasks", methods=["GET", "POST"])
 def tasks():
-    return render_template("tasks.html")
+    return render_template("tables.html", title="Tasks", header="task", name="Name of task")
 
-@app.route("/rewards")
+@app.route("/rewards", methods=["GET", "POST"])
 def rewards():
-    return render_template("rewards.html")
+    return render_template("tables.html", title="Rewards", header="reward", name="Name of reward")
 
 # Invalid URL
 @app.errorhandler(404)
