@@ -1,61 +1,94 @@
-## Make sure you have python, pip
+# Tasksapp CS50x 2022
 
-## Install virtual
+Using Flask to build task management app for people with ADHD.
 
-python3 -m venv virt
+Extensions:
 
-## start virtual 
+* Flask-Session
 
-source virt/bin/activate
+* Flask-SQLalchemy
 
-## to deactivate virt
+* Flask-login
 
-deactivate
+# Installation
 
-## To install flask dependences 
+## Install flask with pip from requirements:
 
-pip install flask
+    $ pip install -r requirements.txt
 
-## install flask session
+## Run Flask app:
 
-pip install Flask-Session
+    flask run
 
-## Check if it got installed correct
+## Initial setup of a flask project
 
-flask --version
+1. Make sure you have python, pip installed.
 
-## Check what installed in the virtual enviroment
+2. Install virtual enviroment:
 
-pip freeze
+        python3 -m venv virt
 
-## set variables
+3. Run virtual enviroment:
 
-export FLASK_ENV=development
+        source virt/bin/activate
 
-### Add app.py
+    * to deactivate virtual enviroment:
 
-export FLASK_APP=app.py
+            deactivate
 
-### Debug mode: on
+    * Check what installed in the virtual enviroment:
 
-export FLASK_DEBUG=1 
+            pip freeze
 
-### Run app
+4. To install flask with dependences:
 
-flask run
+        pip install flask
 
-# DB
+    * Check if it got installed correct:
 
-## install sqlalchemy
+            flask --version
 
-pip install flask-sqlalchemy
+5. Set variables:
 
-## open interactive
+        export FLASK_ENV=development
 
-python3
+6. Debug mode: on (if needed for development):
 
-## import and create db
+        export FLASK_DEBUG=1 
 
-from app import db
+7. Add app.py:
 
-db.create_all()
+        export FLASK_APP=app.py
+
+### Flask-Session installation
+
+1. Install flask session:
+
+        pip install Flask-Session
+
+### Database
+
+1. Install sqlalchemy:
+
+        pip install flask-sqlalchemy
+
+2. Open interactive python:
+
+        python3
+
+3. Import and create database:
+
+        from app import db
+
+        db.create_all()
+
+### Login
+
+1. Install flask login:
+
+        pip install flask-login
+
+
+### Add requirements for easier installation:
+
+    pip freeze > requirements.txt
