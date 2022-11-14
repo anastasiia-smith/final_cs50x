@@ -1,5 +1,3 @@
-
-import email
 from flask import Flask, render_template, redirect, request, session
 from flask_sqlalchemy import SQLAlchemy
 
@@ -11,7 +9,6 @@ db = SQLAlchemy(app)
 class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200), nullable=False)
-    email = db.Column(db.String(200), nullable=False)
     password = db.Column(db.String(200), nullable=False)
     tasks = db.relationship('Tasks', backref='person', lazy=True)
     rewards = db.relationship('Rewards', backref='person', lazy=True)
@@ -60,9 +57,9 @@ def rewards():
 # Invalid URL
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template("error.html", error=404, msg="Page not found"), 404
+    return render_template("error.html", error=404, msg="Page not found", title="Something went wrong"), 404
 
 # Internal Server Error
 @app.errorhandler(500)
 def page_not_found(e):
-    return render_template("error.html", error=500, msg="Try again..."), 500
+    return render_template("error.html", error=500, msg="Try again...", title="Something went wrong"), 500
