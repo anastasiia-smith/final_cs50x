@@ -1,8 +1,12 @@
 from flask import Flask, render_template, redirect, request, session
 from flask_sqlalchemy import SQLAlchemy
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
 
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = "CS50"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tasksapp.db'
 db = SQLAlchemy(app)
 
@@ -34,13 +38,28 @@ class Rewards(db.Model):
     def __repr__(self):
         return '<Reward %r>' % self.reward
 
+# Create a form class
+
+class LoginForm(FlaskForm):
+    name = StringField("Your name", validators=[DataRequired()])
+    password = StringField("Password", validators=[DataRequired()])
+    submit = SubmitField("Submit")
+
 @app.route("/")
 def index():
     return render_template("index.html")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    return render_template("login.html", title="Log in")
+    name = None
+    password = None
+    form = LoginForm()
+    # Validate
+    if form.validate_on_submit():
+        name = form.name.data
+        password = form.password.data
+        form.name.data = ''
+    return render_template("login.html", title="Log in", name = name, password = password, form = form)
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
